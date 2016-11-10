@@ -21,12 +21,15 @@
 	background:none repeat scroll 0 0 #F9F9F9;
 	text-align:center;
 	
-	input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
+}
+
+.btn-add {
+	    width: 90%;
+    background-color: #008000;
+    color: white;
+    padding: 14px 20px;
     margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 4px;
-    box-sizing: border-box;
+    cursor: pointer;
 }

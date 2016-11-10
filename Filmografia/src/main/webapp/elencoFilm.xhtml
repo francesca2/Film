@@ -20,8 +20,6 @@
 	<h1>Tabella Film</h1>
 	<br/>
 	
-	<h:button value="Aggiungi Film" outcome="formRegistra"/><br/>
-	
 	<h:form>
 	<h:dataTable value="#{fc.updateLista()}" var="tempFilm" 
 		styleClass="demo-table" headerClass="demo-table-header"
@@ -53,12 +51,14 @@
 							   action="#{fc.modificaFilm(tempFilm.id_Film)}"/>
 					
 				<h:commandLink value="&nbsp;&nbsp;Delete" 
-								onclick="if(!confirm('Sei sicuro di voler cancellare?'))return false"
+								onclick="confirm('Sei sicuro di voler cancellare?')"
 							   action="#{fc.cancellaFilm(tempFilm.id_Film)}"/>
 		</h:column>
 	</h:dataTable>
 </h:form>	
-		
+
+	<h:button value="Aggiungi Film" outcome="formRegistra" styleClass="btn-add"/><br/>
+			
 
 </h:body>
 
