@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Home Film</title>
+	<h:outputStylesheet library="css" name="tabelle.css"/>
+</h:head>
+
+<h:body>
+
+	<h1>Tabella Film</h1>
+	<br/>
+	
+	<h:button value="Aggiungi Film" outcome="formRegistra"/><br/>
+	
+	<h:form>
+	<h:dataTable value="#{fc.updateLista()}" var="tempFilm" 
+		styleClass="demo-table" headerClass="demo-table-header"
+		rowClasses="demo-table-odd-row, demo-table-even-row"
+	>
+		<h:column>
+			<f:facet name="header">Titolo</f:facet>
+			#{tempFilm.nome}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Anno di produzione</f:facet>
+			#{tempFilm.data}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Regista</f:facet>
+			#{tempFilm.regista}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Genere</f:facet>
+			#{tempFilm.genere}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Codice Film</f:facet>
+			#{tempFilm.codice}
+		</h:column>
+				<h:column>
+			<f:facet name="header">Actions</f:facet>
+				<h:commandLink value="Edit" 
+							   action="#{fc.modificaFilm(tempFilm.id_Film)}"/>
+					
+				<h:commandLink value="&nbsp;&nbsp;Delete" 
+							   action="#{fc.cancellaFilm(tempFilm.id_Film)}"/>
+		</h:column>
+	</h:dataTable>
+</h:form>	
+		
+
+</h:body>
+
+</html>

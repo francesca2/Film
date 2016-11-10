@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+<style>
+.colori{
+color:red;
+}
+</style>
+</h:head>
+
+<h:body>
+<h:form>
+Nome:  <h:inputText id="nome" value="#{f.nome}" label="Nome" required="true" requiredMessage="Questo campo è obbligatorio"/>
+ <h:message for="nome" styleClass="colori"/>
+ <br/>
+Anno di produzione:
+ <h:inputText id="data" value="#{f.data}" label="Data" validatorMessage="Devi inserire un anno xxxx">
+ <f:validateRegex pattern="\d{4}"></f:validateRegex>
+ </h:inputText>
+ <br/>
+ Regista:
+  <h:inputText id="regista" value="#{f.regista}"/>
+ <br/>
+ Codice filme:
+  <h:inputText id="codice" value="#{f.codice}" label="Codice"
+ validator="#{f.validazioneCodice}">
+ </h:inputText>
+    <h:message for="codice" styleClass="colori"/>
+    <br/>
+ Genere:
+  <h:selectOneMenu value="#{f.genere}"> 
+  <f:selectItems value="#{f.generi}"></f:selectItems>
+</h:selectOneMenu>  
+<h:commandButton value="Registra" action="#{fc.aggiungi(f)}"/>
+</h:form>
+</h:body>
+</html>

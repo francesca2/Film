@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+       <style>
+          .colori{
+          color:red;
+          }
+       </style>
+   </h:head>
+   
+   <h:body> 
+      <h1>Modifica Film</h1>
+      <h:form>
+         
+         Titolo:   <h:inputText id="titolo" 
+                    value="#{f.nome}" 
+                    label="titolo"
+                    required="true" 
+                    /> 
+                    
+                   <br/>
+Anno di Produzione:    <h:inputText id="anno" 
+         		   		value="#{f.data}"
+         		   		label="anno"
+         		   		required="true"
+         		   		/>
+         		   
+         		   		<br/>
+     Regista:     <h:inputText id="regista" 
+                   value="#{f.regista}"
+                   label="regista"
+                   required="true"
+                   />
+           
+                   <br/>
+     Genere:       <h:selectOneMenu value="#{f.genere}"> 
+ 				 	<f:selectItems value="#{f.generi}"></f:selectItems>
+					</h:selectOneMenu>  
+         			
+         			<br/> 
+ Codice Film:      <h:inputText id="codiceFilm"
+     				value="#{f.codice}"
+     				label="Codice Film"
+     				required="true"  
+     				>
+         			</h:inputText> 
+         			<br/>
+         			<h:inputHidden value="#{f.id_Film}"/>
+         <h:commandButton value="Edit" action="#{fc.aggiornaFilm(f)}"/>
+      
+      </h:form>
+      
+      
+   
+   </h:body>
+</html>
