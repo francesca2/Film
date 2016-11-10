@@ -49,6 +49,7 @@
 							   action="#{fc.modificaFilm(tempFilm.id_Film)}"/>
 					
 				<h:commandLink value="&nbsp;&nbsp;Delete" 
+								onclick="if(!confirm('Sei sicuro di voler cancellare?'))return false"
 							   action="#{fc.cancellaFilm(tempFilm.id_Film)}"/>
 		</h:column>
 	</h:dataTable>
