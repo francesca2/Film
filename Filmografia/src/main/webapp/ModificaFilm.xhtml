@@ -12,6 +12,7 @@
           color:red;
           }
        </style>
+       <h:outputStylesheet library="css" name="form.css"/>
    </h:head>
    
    <h:body> 
@@ -29,10 +30,10 @@
 Anno di Produzione:    <h:inputText id="anno" 
          		   		value="#{f.data}"
          		   		label="anno"
-         		   		validatorMessage="Devi inserire un anno xxxx"
+         		   		validatorMessage="L'anno deve essere maggiore del 1950!"
          		   		styleClass="input-text"
          		   		>
-         		   		<f:validateRegex pattern="\d{4}"></f:validateRegex>
+         		   		 <f:validateLongRange minimum="1950" maximum="2017"/>
          		   		</h:inputText>
          		   
          		   		<br/>
@@ -42,14 +43,8 @@ Anno di Produzione:    <h:inputText id="anno"
                    required="true"
                    styleClass="input-text"
                    />
-           
-                   <br/>
-     Genere:       <h:selectOneMenu value="#{f.genere}"> 
- 				 	<f:selectItems value="#{f.generi}"></f:selectItems>
-					</h:selectOneMenu>  
-         			
-         			<br/> 
- Codice Film:      <h:inputText id="codiceFilm"
+                   
+  	Codice Film:      <h:inputText id="codiceFilm"
      				value="#{f.codice}"
      				label="Codice Film"
      				validator="#{f.validazioneCodice}" 
@@ -59,7 +54,16 @@ Anno di Produzione:    <h:inputText id="anno"
     				<h:message for="codice" styleClass="colori"/>
          			<br/>
          			<h:inputHidden value="#{f.id_Film}"/>
-         <h:commandButton value="Edit" action="#{fc.aggiornaFilm(f)}" styleClass="input-submit"/>
+           
+                   <br/>
+     Genere:       <h:selectOneMenu value="#{f.genere}" styleClass="input-text"> 
+ 				 	<f:selectItems value="#{f.generi}" ></f:selectItems>
+					</h:selectOneMenu>  
+         			
+         			<br/> 
+ 
+         <h:commandButton value="Edit" action="#{fc.aggiornaFilm(f)}" styleClass="input-submit"
+         				onclick="if(!confirm('Confermare le modifiche?'))return false"/>
       
       </h:form>
       

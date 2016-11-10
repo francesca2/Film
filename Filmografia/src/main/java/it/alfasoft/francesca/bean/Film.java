@@ -42,10 +42,10 @@ public class Film implements Serializable {
 		generi.add("Avventura");
 		generi.add("Commedia");
 		generi.add("Drammatico");
-		generi.add("Horro");
-		generi.add("Animato");
+		generi.add("Horror");
+		generi.add("Animazione");
 		generi.add("Fantascienza");
-		generi.add("Fantasy");
+		generi.add("Fantastico");
 	}
 	
 	public Film( String nome, String data, String regista,
