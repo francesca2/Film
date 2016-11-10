@@ -6,6 +6,10 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
+<f:metadata>
+<f:event listener="#{fc.caricaFilm()}" type="preRenderView"/>
+</f:metadata>
+
 <h:head>
 	<title>Home Film</title>
 	<h:outputStylesheet library="css" name="tabelle.css"/>

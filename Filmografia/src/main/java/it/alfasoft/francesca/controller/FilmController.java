@@ -8,10 +8,12 @@ import it.alfasoft.francesca.bean.Film;
 import it.alfasoft.francesca.servizi.Servizi;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 @ManagedBean(name="fc", eager=true)
+@SessionScoped
 public class FilmController implements Serializable {
 
 	/**
@@ -84,4 +86,8 @@ public class FilmController implements Serializable {
 		return "elencoFilm?faces-redirect=true";
 	}
 
+	public void caricaFilm(){
+		setListaFilm(s.getAllfilms());
+		
+	}
 }
