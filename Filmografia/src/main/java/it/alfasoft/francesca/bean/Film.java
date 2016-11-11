@@ -45,6 +45,10 @@ public class Film implements Serializable {
 //		generi.add("Fantastico");
 //	}
 	
+	public Film(){
+		
+	}
+	
 	public Film( String nome, String data, String regista,
 			String codice, String genere) {
 		this.nome = nome;

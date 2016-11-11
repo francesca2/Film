@@ -56,6 +56,7 @@ public class EditView implements Serializable {
 		}
 
 		public void onRowEdit(RowEditEvent event) {
+			controller.aggiornaFilm((Film) event.getObject());
 	        FacesMessage msg = new FacesMessage("Film Edited", ((Film) event.getObject()).getNome());
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 	    }
