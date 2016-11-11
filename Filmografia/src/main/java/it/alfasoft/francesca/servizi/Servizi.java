@@ -6,7 +6,7 @@ import it.alfasoft.francesca.bean.Film;
 import it.alfasoft.francesca.dao.FilmDao;
 
 public class Servizi {
-	
+
 	FilmDao fdao= new FilmDao();
 
 	public boolean addFilm(Film f){

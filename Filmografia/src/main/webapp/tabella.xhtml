@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+<f:event listener="#{fc.caricaFilm()}" type="preRenderView"/>
+</f:metadata>
+
+<h:head>
+
+</h:head>
+
+<h:body>
+<h:form id="form">
+   <p:growl id="msgs" showDetail="true"/>
+ 
+   <p:dataTable id="films" var="film" value="#{dtEditView.films}" editable="true" style="margin-bottom:20px">
+       <f:facet name="header">
+           Film
+       </f:facet>
+ 
+       <p:ajax event="rowEdit" listener="#{dtEditView.onRowEdit}" update=":form:msgs" />
+       <p:ajax event="rowEditCancel" listener="#{dtEditView.onRowCancel}" update=":form:msgs" />
+ 
+       <p:column headerText="Titolo">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{film.nome}" /></f:facet>
+               <f:facet name="input"><p:inputText id="modelInput" value="#{film.nome}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Regista">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{film.regista}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{film.regista}" style="width:100%" label="Regista"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Genere">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{film.genere}" /></f:facet>
+               <f:facet name="input">
+                   <h:selectOneMenu value="#{film.genere}" style="width:100%">
+                       <f:selectItems value="#{dtEditView.generi}" var="man" itemLabel="#{man}" itemValue="#{man}" />
+                   </h:selectOneMenu>
+               </f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Anno di Produzione">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{film.data}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{film.data}" style="width:100%" label="Data"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column style="width:32px">
+           <p:rowEditor />
+       </p:column>
+   </p:dataTable>
+   </h:form>
+
+</h:body>
+</html>

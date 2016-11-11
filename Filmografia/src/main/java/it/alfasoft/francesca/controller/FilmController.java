@@ -1,12 +1,14 @@
 package it.alfasoft.francesca.controller;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import it.alfasoft.francesca.bean.Film;
 import it.alfasoft.francesca.servizi.Servizi;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
@@ -21,13 +23,32 @@ public class FilmController implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	 private final static String[] generi;
+	 
+	 
+	    static {
+	        generi = new String[7];
+	        generi[0] = "Avventura";
+	        generi[1] = "Commedia";
+	        generi[2] = "Drammatico";
+	        generi[3] = "Horror";
+	        generi[4] = "Animazione";
+	        generi[5] = "Fantascienza";
+	        generi[6] = "Fantastico";
+	    }
+	 
+	
 	private List<Film> listaFilm;
 	private Servizi s;
 	
 	public FilmController() {
-		s= new Servizi();
 	}
 
+    @PostConstruct
+    public void init(){
+    	s=new Servizi();
+    }
+	
 	public String aggiungi(Film f) {
 		s.addFilm(f);	
 		return "elencoFilm";
@@ -90,4 +111,10 @@ public class FilmController implements Serializable {
 		setListaFilm(s.getAllfilms());
 		
 	}
+	
+    public List<String> getGeneri() {
+        return Arrays.asList(generi);
+    }
+    
+
 }
