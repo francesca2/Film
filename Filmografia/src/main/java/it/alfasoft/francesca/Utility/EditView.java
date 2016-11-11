@@ -62,6 +62,7 @@ public class EditView implements Serializable {
 	    }
 	     
 	    public void onRowCancel(RowEditEvent event) {
+	    	controller.eliminaFilm((Film) event.getObject());
 	        FacesMessage msg = new FacesMessage("Edit Cancelled", ((Film) event.getObject()).getNome());
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 	    }

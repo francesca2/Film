@@ -1,7 +1,7 @@
 /*
  * Classe che mi serve per aprire la sessione di Hibernte
  */
-package hibernateUtil;
+package it.alfasoft.francesca.Utility;
 
 import org.hibernate.Session;
  import org.hibernate.SessionFactory;

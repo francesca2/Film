@@ -1,6 +1,7 @@
 package it.alfasoft.francesca.dao;
 
-import hibernateUtil.HibernateUtil;
+
+import it.alfasoft.francesca.Utility.HibernateUtil;
 import it.alfasoft.francesca.bean.Film;
 
 import java.util.ArrayList;

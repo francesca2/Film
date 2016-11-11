@@ -106,6 +106,12 @@ public class FilmController implements Serializable {
 		
 		return "elencoFilm?faces-redirect=true";
 	}
+	
+	public String eliminaFilm(Film f){
+		s.deleteFilm(f);
+		
+		return "tabella?faces-redirect=true";
+	}
 
 	public void caricaFilm(){
 		setListaFilm(s.getAllfilms());
