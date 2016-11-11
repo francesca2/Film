@@ -2,7 +2,6 @@ package it.alfasoft.francesca.Utility;
 
 import it.alfasoft.francesca.bean.Film;
 import it.alfasoft.francesca.controller.FilmController;
-import it.alfasoft.francesca.servizi.Servizi;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,12 +11,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.RowEditEvent;
 
 @ManagedBean(name="dtEditView")
-@SessionScoped
+@ViewScoped
 public class EditView implements Serializable {
 
 	/**
@@ -63,6 +63,7 @@ public class EditView implements Serializable {
 	     
 	    public void onRowCancel(RowEditEvent event) {
 	    	controller.eliminaFilm((Film) event.getObject());
+	    	controller.updateLista();
 	        FacesMessage msg = new FacesMessage("Edit Cancelled", ((Film) event.getObject()).getNome());
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 	    }
@@ -70,4 +71,14 @@ public class EditView implements Serializable {
 	    public static long getSerialversionuid() {
 			return serialVersionUID;
 		}
+	    
+	    public String delete(Film f){
+	    	controller.eliminaFilm(f);
+	    	return "tabella?faces-redirect=true";
+	    }
+	    
+	    public String edit(Film f){
+	    	controller.aggiornaFilm(f);
+	    	return "tabella?faces-redirect=true";
+	    }
 }

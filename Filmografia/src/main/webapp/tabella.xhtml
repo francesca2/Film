@@ -8,7 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
-<f:event listener="#{fc.caricaFilm()}" type="preRenderView"/>
+<f:event listener="#{fc.updateLista()}" type="preRenderView"/>
 </f:metadata>
 
 <h:head>
@@ -61,6 +61,11 @@
  
        <p:column style="width:32px">
            <p:rowEditor />
+           </p:column>
+                  <p:column style="width:32px">
+                  <p:commandLink action="#{dtEditView.delete(film)}" onclick="if(!confirm('sei sicuro che vuoi cancellare?'))return false" id="iconOnly" update="form">
+           <i class="ui-icon ui-icon-trash"></i>
+           </p:commandLink>
            </p:column>
    </p:dataTable>
    </h:form>
